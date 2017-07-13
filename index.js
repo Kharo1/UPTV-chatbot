@@ -122,9 +122,9 @@ app.post('/', (req, res) => {
         }
       })
     })
+    res.sendStatus(200)
   }
-  res.sendStatus(200)
-})
+
 
 
 //greeting message
