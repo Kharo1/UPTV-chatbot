@@ -22,7 +22,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
 
 // index check to see if server is available
 app.get('/', function (req, res) {
-	res.send('Hello I am the new UPTV bot :)')
+	res.send(req.query['hub.challenge'])
 })
 
 // for facebook verification
