@@ -92,12 +92,12 @@ app.post('/', function(req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
     const sender = event.sender.id
-		if (event.message && !event.message.text) {
+		if (event.message.text) {
       const sessionId = findOrCreateSession(sender)
 			const text = event.message.text
-
-    }else if(){
       greet(sender)
+    }else{
+      sendRequest(sender, {text: "Sorry I can only proces text messages for you right now."})
     }
 	 }
 	res.sendStatus(200)
