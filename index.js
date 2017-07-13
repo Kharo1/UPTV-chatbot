@@ -41,6 +41,26 @@ app.get('/', function (req, res) {
 	}
 })
 
+//contains all user sessions
+//each session has an entry
+const sessions = {}
+const findOrCreateSession = (fbid) =>{
+  let sessionID
+  //check to see if session for user already exists
+  Object.keys(sessions).forEach(k => {
+    if(sessions[k].fbid === fbid){
+      //session already exists
+      sessionID = k
+    }
+  })
+    if(!sessionID){
+      //no session found for fbid facebook user, need to create one
+      sessionID = new Date().toISOString()
+      sessions[sessionID] = {fbid: fbid, context:{}}
+    }
+    return sessionID
+}
+
 //Listen to the number of messages user posts
 app.post('/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -55,11 +75,13 @@ app.post('/', function(req, res) {
 	res.sendStatus(200)
 })
 
+//greeting message
 function greet(sender){
   let greeting = {  text :"Hi {{user_first_name}}, welcome to this bot."}
   sendRequest(sender,greeting)
 }
 
+//send message back to user
 function sendRequest(sender, message){
   request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
