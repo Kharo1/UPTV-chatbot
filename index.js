@@ -97,7 +97,7 @@ app.post('/', function(req, res) {
 			const {text, attachments} = event.message
     if(attachments){
       //we recieved some sort of attachment
-      sendRequest(sender, 'Sorry I can only process text messages for you right now :(')
+      sendRequest(sender, {text: "Sorry I can only process text messages for you right now :("})
       .catch(console.error)
     }else if(text){
     greet(sender)
