@@ -87,19 +87,45 @@ const actions = {
 }
 
 //Listen to the number of messages user posts
-app.post('/', function(req, res) {
-	let messaging_events = req.body.entry[0].messaging
-	for (let i = 0; i < messaging_events.length; i++) {
-		let event = messaging_events[i]
-		if (event.message && event.message.text) {
-      const sender = event.sender.id
-      const sessionId = findOrCreateSession(sender)
-			const text = event.message.text
-      greet(sender)
+
+app.post('/', (req, res) => {
+  const data = req.body
+  if (data.object === 'page') {
+    data.entry.forEach(entry => {
+      entry.messaging.forEach(event => {
+        if (event.message && !event.message.is_echo) {
+          // We retrieve the Facebook user ID of the sender
+          const sender = event.sender.id
+
+          // We retrieve the user's current session, or create one if it doesn't exist
+          // This is needed for our bot to figure out the conversation history
+          const sessionId = findOrCreateSession(sender);
+
+          // We retrieve the message content
+          const {text, attachments} = event.message
+
+          if (attachments) {
+            // We received an attachment
+            sendRequest(sender, {text: "Sorry I can only process text messages for now."})
+            .catch(console.error)
+          } else if (text) {
+            // We received a text message
+            greet(sender);
+
+            })
+            .catch((err) => {
+              console.error('Oops! Got an error from Wit: ', err.stack || err)
+            })
+          }
+        } else {
+          console.log('received event', JSON.stringify(event))
+        }
+      })
+    })
   }
-	}
-	res.sendStatus(200)
+  res.sendStatus(200)
 })
+
 
 //greeting message
 function greet(sender){
