@@ -96,6 +96,10 @@ app.post('/', function(req, res) {
       const sessionId = findOrCreateSession(sender)
 			const text = event.message.text
       greet(sender)
+  }else if (event.message.attachment){
+    //we recieved some sort of attachment
+    sendRequest(sender, {text: "Sorry I can only process text messages for you right now :("})
+    .catch(console.error)
   }
 	}
 	res.sendStatus(200)
