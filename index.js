@@ -86,6 +86,13 @@ const actions = {
   //my responses goes here
 }
 
+//set up bot
+const wit = new Wit({
+  accessToken: WIT_ACCESS_TOKEN,
+  actions,
+  logger: new log.Logger(log.INFO)
+})
+
 //Listen to the number of messages user posts
 app.post('/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
