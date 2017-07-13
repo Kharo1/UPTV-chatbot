@@ -7,6 +7,7 @@
 const express = require('express'),
  			bodyParser = require('body-parser'),
  			request = require('request'),
+      crypto = require('crypto'),
  			app = express()
 
 //ports and communication
