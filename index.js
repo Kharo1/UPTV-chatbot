@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 })
 
 // for facebook verification
-app.get('/webhook/', function (req, res) {
+app.get('/', function (req, res) {
 	if (req.query['hub.verify_token'] === VALIDATON_TOKEN) {
 		res.send(req.query['hub.challenge'])
 	} else {
@@ -35,7 +35,7 @@ app.get('/webhook/', function (req, res) {
 })
 
 //Listen to the number of messages user posts
-app.post('/webhook/', function(req, res) {
+app.post('/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
@@ -49,7 +49,7 @@ app.post('/webhook/', function(req, res) {
 })
 
 function greet(sender){
-  let greeting = {  "text" :"Hi {{user_first_name}}, welcome to this bot."}
+  let greeting = {  text :"Hi {{user_first_name}}, welcome to this bot."}
   sendRequest(sender,greeting)
 }
 
