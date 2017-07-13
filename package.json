@@ -1,0 +1,26 @@
+{
+  "name": "uptv_chatbot)",
+  "version": "1.0.0",
+  "description": "UPTV Chatbot development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "UPTV",
+    "chatbot",
+    "wit",
+    "express",
+    "facebook",
+    "facebook",
+    "messenger"
+  ],
+  "author": "Kevin Haro",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "node-wit": "^4.2.0",
+    "request": "^2.81.0"
+  }
+}
