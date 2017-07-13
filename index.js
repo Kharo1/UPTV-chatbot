@@ -99,7 +99,6 @@ app.post('/', function(req, res) {
   }else{
     //we recieved some sort of attachment
     sendRequest(sender, {text: "Sorry I can only process text messages for you right now :("})
-    .catch(console.error)
   }
 	}
 	res.sendStatus(200)
