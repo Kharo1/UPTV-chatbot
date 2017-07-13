@@ -19,7 +19,8 @@ app.use(bodyParser.json())
 //inject access tokens as environmental variables, e.g.
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
 			VALIDATON_TOKEN = process.env.VALIDATON_TOKEN,
-			APP_SECRET = process.env.APP_SECRET
+			APP_SECRET = process.env.APP_SECRET,
+      WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 
 // index check to see if server is available
