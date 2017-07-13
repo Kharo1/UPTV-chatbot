@@ -91,18 +91,16 @@ app.post('/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
-		if (event.message && !event.message.is_echo) {
+		if (event.message && event.message.text) {
       const sender = event.sender.id
       const sessionId = findOrCreateSession(sender)
-			const {text, attachments} = event.message
-    if(attachments){
-      //we recieved some sort of attachment
-      sendRequest(sender, {text: "Sorry I can only process text messages for you right now :("})
-      .catch(console.error)
-    }else if(text){
-    greet(sender)
-    }
-		}
+			const text = event.message.text
+      greet(sender)
+  }else if (attachments){
+    //we recieved some sort of attachment
+    sendRequest(sender, {text: "Sorry I can only process text messages for you right now :("})
+    .catch(console.error)
+  }
 	}
 	res.sendStatus(200)
 })
