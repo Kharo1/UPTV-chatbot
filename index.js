@@ -11,6 +11,17 @@ const express = require('express'),
       fetch = require('node-fetch'),
  			app = express()
 
+let wit = null
+let log = null
+try {
+  // if running from repo
+  Wit = require('../').Wit;
+  log = require('../').log;
+} catch (e) {
+  Wit = require('node-wit').Wit;
+  log = require('node-wit').log;
+}
+
 //ports and communication
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
