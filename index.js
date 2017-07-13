@@ -91,8 +91,10 @@ app.post('/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
-		const sender = event.sender.id
 		if (event.message && event.message.text) {
+      const sender = event.sender.id
+      const sessionId = findOrCreateSession(sender)
+
 			let text = event.message.text
       greet(sender)
 		}
