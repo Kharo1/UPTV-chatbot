@@ -11,7 +11,11 @@ const express = require('express'),
       fetch = require('node-fetch'),
  			app = express()
 
-let wit = require('node-wit').Wit,
+let wit = null,
+    log = null
+
+    
+    wit = require('node-wit').Wit,
     log = require('node-wit').log
 
 
