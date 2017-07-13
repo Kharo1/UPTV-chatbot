@@ -61,12 +61,37 @@ const findOrCreateSession = (fbid) =>{
     return sessionID
 }
 
+//Search sessions and make call to reply to user
+const actions = {
+  send({sessionID},{text}){
+    //retrieve user id to reply to facebook user
+    const recipientID = sessions[sessionID].fbid
+    if(recipientID){
+      //we found the recipient
+      return sendRequest(recipientID,text)
+      .then(() => null)
+      .catch((err) =>{
+        console.error(
+          'Oops! An error occurred while forwarding the response to',
+          recipientID,
+          ':',
+          err.stack || err
+        )
+      })
+    }else{
+      console.error('Could not find user for session:',sessionID)
+      return Promise.resolve()
+    }
+  },
+  //my responses goes here
+}
+
 //Listen to the number of messages user posts
 app.post('/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
-		let sender = event.sender.id
+		const sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
       greet(sender)
