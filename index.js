@@ -29,6 +29,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
+$(document).ready(function() {
   $.ajax({
     type: "GET",
     url: "http://uptv.com/todays-tv-schedule-feed/",
@@ -38,6 +39,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
     dataType: "JSON",
     success: function(data) {
       programming_list = data.data.schedule
+      //console.log(programming_list);
       //retrieve show programming_list[0]['show']
       //retrieve description programming_list[0]['description']
       //retrieve date programming_list[0]['date']
@@ -46,6 +48,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       //retrieve number programming length programming_list.length
     }
   })
+})
 
 
 
