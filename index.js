@@ -3,6 +3,9 @@
  *@author: Kevin Haro
  */
 'use strict'
+var script = document.createElement('script')
+script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
+script.type = 'text/javascript'
 
 const express = require('express'),
  			bodyParser = require('body-parser'),
@@ -29,7 +32,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
-  jQuery.ajax({
+  $.ajax({
     type: "GET",
     url: "http://uptv.com/todays-tv-schedule-feed/",
     data: { get_param: 'value' },
