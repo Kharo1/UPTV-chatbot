@@ -29,7 +29,6 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
-$(document).ready(function() {
   $.ajax({
     type: "GET",
     url: "http://uptv.com/todays-tv-schedule-feed/",
@@ -46,7 +45,6 @@ $(document).ready(function() {
       //retrieve number programming length programming_list.length
     }
   })
-})
 
 
 
