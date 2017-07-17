@@ -92,7 +92,7 @@ app.post('/', function(req, res) {
       //retrieve title programming_list[0]['short_title']
       //status on now? programming_list[0]['on_now']
       //retrieve number programming length programming_list.length
-      console.log("RETRIEVED SHOWS")
+      console.log(programming_list)
     }else{
       console.log("FAILED TO RETRIEVE SHOWS")
     }
