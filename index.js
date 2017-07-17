@@ -103,6 +103,23 @@ app.post('/', function(req, res) {
       const sessionId = findOrCreateSession(sender)
 			const text = event.message.text
       greet(sender)
+      wit.runActions(
+          sessionId, // the user's current session
+          text, // the user's message
+          sessions[sessionId].context // the user's current session state
+        ).then((context) => {
+          // Now it's waiting for further messages to proceed.
+          console.log('Waiting for next user messages');
+
+          // if (context['done']) {
+          //   delete sessions[sessionId];
+          // }
+          // Updating the user's current session state
+          sessions[sessionId].context = context;
+        })
+        .catch((err) => {
+          console.error('Oops! Got an error from Wit: ', err.stack || err);
+        })
     }else{
       sendRequest(sender, {text: "Sorry I can only proces text messages for you right now."})
     }
