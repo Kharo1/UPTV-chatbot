@@ -31,6 +31,12 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
 //retrieve programming list from server and store into local array
 app.get("http://uptv.com/todays-tv-schedule-feed/", function(data) {
   programming_list = data.data.schedule
+  //retrieve show programming_list[0]['show']
+  //retrieve description programming_list[0]['description']
+  //retrieve date programming_list[0]['date']
+  //retrieve title programming_list[0]['short_title']
+  //status on now? programming_list[0]['on_now']
+  //retrieve number programming length programming_list.length
 })
 
 // index check to see if server is available
