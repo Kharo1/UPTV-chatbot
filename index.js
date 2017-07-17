@@ -3,9 +3,6 @@
  *@author: Kevin Haro
  */
 'use strict'
-var script = document.createElement('script')
-script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
-script.type = 'text/javascript'
 
 const express = require('express'),
  			bodyParser = require('body-parser'),
@@ -32,23 +29,12 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
-  $.ajax({
-    type: "GET",
-    url: "http://uptv.com/todays-tv-schedule-feed/",
-    data: { get_param: 'value' },
-    dataType: "JSON",
-    success: function(data){
-      programming_list = data.data.schedule
-      console.log(programming_list)
-      //retrieve show programming_list[0]['show']
-      //retrieve description programming_list[0]['description']
-      //retrieve date programming_list[0]['date']
-      //retrieve title programming_list[0]['short_title']
-      //status on now? programming_list[0]['on_now']
-      //retrieve number programming length programming_list.length
-    }
+$(document).ready(function() {
+  $.getJSON("http://uptv.com/todays-tv-schedule-feed/", function(data) {
+    programming_list = data.data.schedule
+    console.log(programming_list)
   })
-
+})
 
 
 

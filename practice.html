@@ -13,11 +13,13 @@
     $.ajax({
       type: "GET",
       url: "http://uptv.com/todays-tv-schedule-feed/",
-      data: { get_param: 'value' },
+      data: {
+        get_param: 'value'
+      },
       dataType: "JSON",
-      success: function(data){
-        programming_list = data.data.schedule;
-        console.log(programming_list);
+      success: function(data) {
+        //programming_list = data.data.schedule;
+        //console.log(programming_list);
 
         //retrieve show programming_list[0]['show']
         //retrieve description programming_list[0]['description']
@@ -27,7 +29,11 @@
         //retrieve number programming length programming_list.length
       }
     });
+    $.getJSON("http://uptv.com/todays-tv-schedule-feed/", function(data) {
+      programming_list = data.data.schedule;
+      console.log(programming_list);
+    });
   });
-
 </script>
+
 </html>
