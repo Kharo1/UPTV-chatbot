@@ -28,17 +28,6 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
 			APP_SECRET = process.env.APP_SECRET,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
-//retrieve programming list from server and store into local array
-app.get("http://uptv.com/todays-tv-schedule-feed/", function(data) {
-  programming_list = data.data.schedule
-  //retrieve show programming_list[0]['show']
-  //retrieve description programming_list[0]['description']
-  //retrieve date programming_list[0]['date']
-  //retrieve title programming_list[0]['short_title']
-  //status on now? programming_list[0]['on_now']
-  //retrieve number programming length programming_list.length
-  console.log("RETRIEVED SHOWS")
-})
 
 // index check to see if server is available
 app.get('/', function (req, res) {
@@ -96,7 +85,7 @@ app.post('/', function(req, res) {
   let url = "http://uptv.com/todays-tv-schedule-feed/"
   request(url,function(error,response){
     if(!error){
-      programming_list = data.data.schedule
+      programming_list = data.schedule
       //retrieve show programming_list[0]['show']
       //retrieve description programming_list[0]['description']
       //retrieve date programming_list[0]['date']
