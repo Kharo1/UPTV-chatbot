@@ -81,7 +81,7 @@ const actions = {
     greet(recipientID)
     getResponse()
   },
-  getResponse({context,entities}){
+  getResponse(){
     sendRequest(recipientID,{  text :"Hi {{user_first_name}}, welcome to this bot."})
   },
   //my responses goes here
