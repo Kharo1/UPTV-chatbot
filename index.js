@@ -28,6 +28,18 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
 			APP_SECRET = process.env.APP_SECRET,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
+//retrieve programming list from server and store into local array
+app.get("http://uptv.com/todays-tv-schedule-feed/", function(data) {
+  programming_list = data.data.schedule
+  //retrieve show programming_list[0]['show']
+  //retrieve description programming_list[0]['description']
+  //retrieve date programming_list[0]['date']
+  //retrieve title programming_list[0]['short_title']
+  //status on now? programming_list[0]['on_now']
+  //retrieve number programming length programming_list.length
+  console.log("RETRIEVED SHOWS")
+})
+
 // index check to see if server is available
 app.get('/', function (req, res) {
 	res.send('Hello I am the new UPTV bot :)')
@@ -81,18 +93,6 @@ const wit = new Wit({
 
 //Listen to the number of messages user posts
 app.post('/', function(req, res) {
-  //retrieve programming list from server and store into local array
-  app.get("http://uptv.com/todays-tv-schedule-feed/", function(data) {
-    programming_list = data.data.schedule
-    //retrieve show programming_list[0]['show']
-    //retrieve description programming_list[0]['description']
-    //retrieve date programming_list[0]['date']
-    //retrieve title programming_list[0]['short_title']
-    //status on now? programming_list[0]['on_now']
-    //retrieve number programming length programming_list.length
-    console.log("RETRIEVED SHOWS")
-  })
-  
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
