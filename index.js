@@ -96,15 +96,7 @@ const actions = {
     }
   },
   getResponse({context,entities}){
-    var location = firstEntityValue(entities, 'location');
-    if (location) {
-      context.forecast = 'sunny in ' + location; // we should call a weather API here
-      delete context.missingLocation;
-    } else {
-      context.missingLocation = true;
-      delete context.forecast;
-    }
-    return context;
+    greet(sender)
   },
   //my responses goes here
 }
@@ -125,7 +117,6 @@ app.post('/', function(req, res) {
 		if (event.message.text) {
       const sessionId = findOrCreateSession(sender)
 			const text = event.message.text
-      greet(sender)
       wit.runActions(
           sessionId, // the user's current session
           text, // the user's message
