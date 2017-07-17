@@ -97,7 +97,7 @@ const actions = {
   },
   getResponse({context,entities}){
     greet(sender)
-  },
+  }
   //my responses goes here
 }
 
