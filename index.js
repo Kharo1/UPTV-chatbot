@@ -78,12 +78,11 @@ const actions = {
   send({sessionId},{text}){
     //retrieve user id to reply to facebook user
     const recipientID = sessions[sessionId].fbid
-    console.log("recipientID: "+ recipientID)
+    greet(recipientID)
   },
   getResponse({context,entities}){
     console.log("GREETING IN getResponse()")
-    greet(recipientID)
-  }
+  },
   //my responses goes here
 }
 
@@ -100,7 +99,6 @@ app.post('/', function(req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
     const sender = event.sender.id
-    console.log("SENDER ID:" + sender);
 		if (event.message.text) {
       const sessionId = findOrCreateSession(sender)
 			const text = event.message.text
