@@ -3,9 +3,6 @@
  *@author: Kevin Haro
  */
 'use strict'
-var script = document.createElement('script')
-
-script.src = '//code.jquery.com/jquery-1.11.0.min.js'
 
 const express = require('express'),
  			bodyParser = require('body-parser'),
@@ -32,8 +29,8 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
-$(document).ready(function() {
-  $.ajax({
+app.ready(function() {
+  app.ajax({
     type: "GET",
     url: "http://uptv.com/todays-tv-schedule-feed/",
     data: {
