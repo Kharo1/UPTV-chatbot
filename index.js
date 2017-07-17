@@ -84,8 +84,9 @@ const wit = new Wit({
 app.post('/', function(req, res) {
   let url = "http://uptv.com/todays-tv-schedule-feed/"
   request(url,function(error,data){
+    console.log(data)
     if(!error){
-      programming_list = data.data.schedule
+      programming_list = data.data
       //retrieve show programming_list[0]['show']
       //retrieve description programming_list[0]['description']
       //retrieve date programming_list[0]['date']
