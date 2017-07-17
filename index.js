@@ -78,22 +78,6 @@ const actions = {
   send({sessionId},{text}){
     //retrieve user id to reply to facebook user
     const recipientID = sessions[sessionId].fbid
-    if(recipientID){
-      //we found the recipient
-      return sendRequest(recipientID,text)
-      .then(() => null)
-      .catch((err) =>{
-        console.error(
-          'Oops! An error occurred while forwarding the response to',
-          recipientID,
-          ':',
-          err.stack || err
-        )
-      })
-    }else{
-      console.error('Could not find user for session:',sessionId)
-      return Promise.resolve()
-    }
   },
   getResponse({context,entities}){
     greet(sender)
