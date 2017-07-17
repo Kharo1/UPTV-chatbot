@@ -3,6 +3,12 @@
  *@author: Kevin Haro
  */
 'use strict'
+requirejs.config({
+    baseUrl: 'js/lib',
+    paths: {
+        jquery: 'jquery-1.9.0'
+    }
+})
 
 const express = require('express'),
  			bodyParser = require('body-parser'),
@@ -49,14 +55,6 @@ $(document).ready(function() {
     }
   })
 })
-
-
-
-
-
-
-
-
 
 
 // index check to see if server is available
