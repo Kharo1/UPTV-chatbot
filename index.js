@@ -79,9 +79,10 @@ const actions = {
     //retrieve user id to reply to facebook user
     const recipientID = sessions[sessionId].fbid
     greet(recipientID)
+    getResponse()
   },
   getResponse({context,entities}){
-    console.log("GREETING IN getResponse()")
+    sendRequest(recipientID,{  text :"Hi {{user_first_name}}, welcome to this bot."})
   },
   //my responses goes here
 }
