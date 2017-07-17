@@ -94,7 +94,7 @@ const wit = new Wit({
 //Listen to the number of messages user posts
 app.post('/', function(req, res) {
   let url = "http://uptv.com/todays-tv-schedule-feed/"
-  request(url,error,response){
+  request(url,function(error,response){
     if(!error){
       programming_list = data.data.schedule
       //retrieve show programming_list[0]['show']
@@ -107,7 +107,7 @@ app.post('/', function(req, res) {
     }else{
       console.log("FAILED TO RETRIEVE SHOWS")
     }
-  }
+  })
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
