@@ -29,7 +29,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
-app.getJSON("http://uptv.com/todays-tv-schedule-feed/", function(data) {
+app.get("http://uptv.com/todays-tv-schedule-feed/", function(data) {
   programming_list = data.data.schedule
 })
 
