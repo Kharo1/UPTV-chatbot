@@ -14,6 +14,8 @@ const express = require('express'),
 let Wit = require('node-wit').Wit,
     log = require('node-wit').log
 
+var programming_list = []
+
 
 //ports and communication
 app.set('port', (process.env.PORT || 5000))
@@ -25,6 +27,33 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
 			VALIDATON_TOKEN = process.env.VALIDATON_TOKEN,
 			APP_SECRET = process.env.APP_SECRET,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
+
+//retrieve programming list from server and store into local array
+$(document).ready(function() {
+  $.ajax({
+    type: "GET",
+    url: "http://uptv.com/todays-tv-schedule-feed/",
+    data: { get_param: 'value' },
+    dataType: "JSON",
+    success: function(data){
+      programming_list = data.data.schedule
+      console.log(programming_list)
+      //retrieve show programming_list[0]['show']
+      //retrieve description programming_list[0]['description']
+      //retrieve date programming_list[0]['date']
+      //retrieve title programming_list[0]['short_title']
+      //status on now? programming_list[0]['on_now']
+      //retrieve number programming length programming_list.length
+    }
+  })
+})
+
+
+
+
+
+
+
 
 
 // index check to see if server is available
@@ -84,7 +113,7 @@ const actions = {
     }
   },
   getResponse({context,entities}){
-    
+
   }
   //my responses goes here
 }
