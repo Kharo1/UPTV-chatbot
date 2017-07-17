@@ -78,7 +78,7 @@ const actions = {
   send({sessionId},{text}){
     //retrieve user id to reply to facebook user
     const recipientID = sessions[sessionId].fbid
-    console.log("IN send()")
+    console.log("recipientID: "+ recipientID)
   },
   getResponse({context,entities}){
     console.log("GREETING IN getResponse()")
