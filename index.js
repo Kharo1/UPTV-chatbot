@@ -144,7 +144,7 @@ app.post('/', function(req, res) {
 
 //greeting message
 function greet(sender){
-  let greeting = {  text :"Hi {{user_first_name}}, welcome to this bot."}
+  let greeting = {  text : programming_list[0]['show']}
   sendRequest(sender,greeting)
 }
 
@@ -166,9 +166,6 @@ function sendRequest(sender, message){
 		}
 	})
 }
-
-
-
 
 // listen for server
 app.listen(app.get('port'), function() {
