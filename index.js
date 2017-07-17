@@ -37,6 +37,7 @@ app.get("http://uptv.com/todays-tv-schedule-feed/", function(data) {
   //retrieve title programming_list[0]['short_title']
   //status on now? programming_list[0]['on_now']
   //retrieve number programming length programming_list.length
+  console.log("RETRIEVED SHOWS")
 })
 
 // index check to see if server is available
@@ -125,7 +126,7 @@ app.post('/', function(req, res) {
 
 //greeting message
 function greet(sender){
-  let greeting = {  text :"Hi {{user_first_name}}, welcome to this bot. Currently airing is, " + programming_list[0]['show']}
+  let greeting = {  text :"Hi {{user_first_name}}, welcome to this bot. Currently airing is, "}
   sendRequest(sender,greeting)
 }
 
