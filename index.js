@@ -85,7 +85,7 @@ app.post('/', function(req, res) {
   let url = "http://uptv.com/todays-tv-schedule-feed/"
   request(url,function(error,data){
     if(!error){
-      programming_list = data
+      programming_list = data.data.schedule
       //retrieve show programming_list[0]['show']
       //retrieve description programming_list[0]['description']
       //retrieve date programming_list[0]['date']
