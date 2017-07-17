@@ -57,27 +57,27 @@ app.get('/', function (req, res) {
 //each session has an entry
 const sessions = {}
 const findOrCreateSession = (fbid) =>{
-  let sessionID
+  let sessionId
   //check to see if session for user already exists
   Object.keys(sessions).forEach(k => {
     if(sessions[k].fbid === fbid){
       //session already exists
-      sessionID = k
+      sessionId = k
     }
   })
-    if(!sessionID){
+    if(!sessionId){
       //no session found for fbid facebook user, need to create one
-      sessionID = new Date().toISOString()
-      sessions[sessionID] = {fbid: fbid, context:{}}
+      sessionId = new Date().toISOString()
+      sessions[sessionId] = {fbid: fbid, context:{}}
     }
-    return sessionID
+    return sessionId
 }
 
 //Search sessions and make call to reply to user
 const actions = {
-  send({sessionID},{text}){
+  send({sessionId},{text}){
     //retrieve user id to reply to facebook user
-    const recipientID = sessions[sessionID].fbid
+    const recipientID = sessions[sessionId].fbid
     if(recipientID){
       //we found the recipient
       return sendRequest(recipientID,text)
@@ -91,7 +91,7 @@ const actions = {
         )
       })
     }else{
-      console.error('Could not find user for session:',sessionID)
+      console.error('Could not find user for session:',sessionId)
       return Promise.resolve()
     }
   },
