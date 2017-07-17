@@ -80,7 +80,7 @@ const actions = {
     const recipientID = sessions[sessionId].fbid
   },
   getResponse({context,entities}){
-    greet(sessioId)
+    greet(event.sender.id)
   }
   //my responses goes here
 }
