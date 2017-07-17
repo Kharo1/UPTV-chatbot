@@ -29,7 +29,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN,
       WIT_ACCESS_TOKEN = process.env.WIT_ACCESS_TOKEN
 
 //retrieve programming list from server and store into local array
-  $.ajax({
+  jQuery.ajax({
     type: "GET",
     url: "http://uptv.com/todays-tv-schedule-feed/",
     data: { get_param: 'value' },
