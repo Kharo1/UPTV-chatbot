@@ -83,6 +83,9 @@ const actions = {
       return Promise.resolve()
     }
   },
+  getResponse({context,entities}){
+    
+  }
   //my responses goes here
 }
 
