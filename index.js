@@ -144,7 +144,7 @@ app.post('/', function(req, res) {
 
 //greeting message
 function greet(sender){
-  let greeting = {  text : programming_list[0]['show']}
+  let greeting = {  text :"Hi {{user_first_name}}, welcome to this bot."}
   sendRequest(sender,greeting)
 }
 
